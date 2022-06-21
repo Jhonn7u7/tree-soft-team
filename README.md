@@ -12,4 +12,4 @@
 
 - [ ] Jose Pinzon
 
-- [ ] Jonathan Tamay
+- [x] Jonathan Tamay
