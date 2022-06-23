@@ -10,6 +10,6 @@
 
 - [ ] Oswaldo Gamboa
 
-- [ ] Jose Pinzon
+- [x] Jose Pinzon
 
 - [x] Jhonatan Israel Tamay May
