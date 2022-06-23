@@ -12,4 +12,4 @@
 
 - [ ] Jose Pinzon
 
-- [x] Jhonatan Tamay May
+- [x] Jhonatan Israel Tamay May
