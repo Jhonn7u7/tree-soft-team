@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap.min.css" rel="stylesheet" >
-    <title>Document</title>
+    <link href="{{ asset('css/app.css') }}" >
+    
+    <title>Autores</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,7 +37,7 @@
 </nav>
 <br>
 <br>
-<section class="intro">
+<section class="intro" id="app">
   <div class="bg-image h-100">
     <div class="mask d-flex align-items-center h-100">
       <div class="container">
@@ -44,7 +46,7 @@
             <div class="card shadow-2-strong">
               <div class="card-body">
                 <div class="table-responsive">
-                  ssss
+                  <example-component />
                 </div>
               </div>
             </div>
@@ -55,5 +57,6 @@
   </div>
 </section>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
