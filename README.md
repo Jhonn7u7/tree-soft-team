@@ -8,7 +8,7 @@
 
 - [x] Erik Ciau
 
-- [ ] Oswaldo Gamboa
+- [x] Oswaldo Gamboa
 
 - [x] Jose Pinzon
 
