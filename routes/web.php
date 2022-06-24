@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index', function () {
-    return view('index');
-});
+
+
+Route::get('/author',[AuthorController::class, 'index'])->name('author.index');
+Route::post('/author',[AuthorController::class, 'store'])->name('author.store');
+Route::get('/author/{author}',[AuthorController::class, 'show'])->name('author.show');
+
+Route::put('/author/{author}',[AuthorController::class, 'update'])->name('author.update');
+Route::delete('/author/{author}',[AuthorController::class, 'destroy'])->name('author.destroy');

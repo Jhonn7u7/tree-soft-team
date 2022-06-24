@@ -81,20 +81,13 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request,Author $author)
     {
-
-        $ValidateData = $request->validate([
-            'username' => 'required|max:255|min:5',
-            'lastname' => 'required',
-            'location'  => 'required',
-        ]);
-
-        $author->username = $ValidateData['username'];
-        $author->lastname = $ValidateData['lastname'];
-        $author->location = $ValidateData['location'];
-
-        return Response()->json(['mensaje' => 'Autor actualizado correctamente'],200);
+        $author ->username = $request->get('username');
+        $author ->lastname = $request->get('lastname');
+        $author ->location = $request->get('location');
+        $author-> update();
+        return response()->json(['mensaje' => 'Autor actualizado correctamente'],200);
 
 
     }
@@ -105,9 +98,8 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Author $author)
     {
-        $author = Author::find($id);
         $author->delete();
         return Response()->json(['mensaje' => 'Autor eliminado correctamente'],200);
     }
