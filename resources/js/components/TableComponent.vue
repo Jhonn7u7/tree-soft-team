@@ -8,13 +8,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="text-center" v-for="(row, i) in contents" :key="i">
-        <td v-for="prop of row" :key="prop">
+      <tr class="text-center" v-for="(row, i) in contents" :key="i + 1">
+        <td v-for="(prop, j) of row" :key="j">
           {{ prop ? prop : 'No definido' }}
         </td>
         <td class="d-flex justify-content-center align-items-center gap-2">
-          <button class="btn btn-warning">Editar</button>
-          <button class="btn btn-danger">Eliminar</button>
+          <!-- <button class="btn btn-warning">Editar</button> -->
+          <button @click="manejadorDeEdicion(row)" type="button" class="btn btn-warning" data-bs-toggle="modal"
+            data-bs-target="#editar">
+            Editar
+          </button>
+          <button @click="manejadorDeEdicion(row)" class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -23,6 +27,16 @@
 
 <script>
 export default {
-  props: ['headings', 'contents'] // -> ['id', 'name']
+  props: ["headings", "contents"], // -> ['id', 'name']
+  methods: {
+    async manejadorDeEdicion({ id }) {
+      if ('URLSearchParams' in window) {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set("id", id);
+        var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+        history.pushState(null, '', newRelativePathQuery);
+      }
+    }
+  }
 }
 </script>
