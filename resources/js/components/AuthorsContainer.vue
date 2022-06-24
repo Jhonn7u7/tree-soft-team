@@ -133,6 +133,22 @@ export default {
         console.log(error)
       }
     },
+    async eliminarAutor() {
+      try {
+        const id = this.obtenerParametrosDeUrl('id')
+        const response = await fetch(`${hostname}/authors/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        console.log(response)
+        alert('Elminado con exito')
+        await this.obtenerAutores()
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
   //fin de methods}
   computed: {
