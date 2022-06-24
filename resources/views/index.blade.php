@@ -38,24 +38,14 @@
 <br>
 <br>
 <section class="intro" id="app">
-  <div class="bg-image h-100">
-    <div class="mask d-flex align-items-center h-100">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            <div class="card shadow-2-strong">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <example-component />
-                </div>
-              </div>
-            </div>
-          </div>
+    <authors-container v-slot="{ data }">
+      <div class="row">
+        <div class="col-12">
+          <table-component :headings="['Nombre', 'Apellido', 'Lugar', 'Creado', 'Actualizado']" :contents="data.autores" />
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </authors-container>
+  </section>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
