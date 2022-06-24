@@ -57,7 +57,12 @@
         </button>
       </div>
     </div>
-    <slot :data="{ autores: autores }" />
+    <div class="row">
+      <div class="col-4">
+        <input v-model="buscar" type="text" class="form-control" placeholder="Buscar autor | Nombre | Apellido">
+      </div>
+    </div>
+    <slot :data="{ autores: filtrado }" />
   </div>
 </template>
 
@@ -66,6 +71,7 @@ const hostname = "http://localhost:8000/api"
 export default {
   data: () => ({
     autores: [],
+    buscar: '',
     formulario: {
       username: '',
       lastname: '',
@@ -159,6 +165,14 @@ export default {
       return (time) => {
         return intl.format(new Date(time));
       };
+    },
+    filtrado() {
+      const aBuscar = this.buscar.toLowerCase()
+      return this.autores.filter(
+        autor =>
+          autor.username.toLowerCase().trim().includes(aBuscar) ||
+          autor.lastname.toLowerCase().trim().includes(aBuscar)
+      )
     }
   },
 }
