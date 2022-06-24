@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Models\Author;
 
 class AuthorController extends Controller
 {
@@ -14,18 +14,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $author = Author::all();
-        return Response()->json($author, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('Author.index');
+        $authors = Author::all();
+        return response()->json($authors, 200);
     }
 
     /**
@@ -36,71 +26,55 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $ValidateData = $request->validate([
-            'username' => 'required|max:255|min:5',
-            'lastname' => 'required',
-            'location'  => 'required',
+        $author = new Author([
+            "username" => $request->username,
+            "lastname" => $request->lastname
         ]);
 
-        Author::create([
-            'username' => $ValidateData['username'],
-            'lastname' => $ValidateData['lastname'],
-            'location' => $ValidateData['location'],
-        ]);
+        $author->save();
 
-        return Response()->json(['mensaje' => 'Autor creado correctamente'],200);
-        
+        return response()->json($author, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Author  $author
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show($id)
     {
+        $author  = Author::find($id);
         return response()->json($author, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Author $author)
-    {
-        return view('Author.edit',compact('author')); 
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Author  $author
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Author $author)
+    public function update(Request $request, $id)
     {
-        $author ->username = $request->get('username');
-        $author ->lastname = $request->get('lastname');
-        $author ->location = $request->get('location');
-        $author-> update();
-        return response()->json(['mensaje' => 'Autor actualizado correctamente'],200);
-
-
+        $author = Author::find($id);
+        $author->username = $request->username;
+        $author->lastname = $request->lastname;
+        $author->location = $request->location;
+        $author->save();
+        return response()->json($author, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Author  $author
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy($id)
     {
+        $author = Author::find($id);
         $author->delete();
-        return Response()->json(['mensaje' => 'Autor eliminado correctamente'],200);
+        return response()->json($author, 200);
     }
 }
