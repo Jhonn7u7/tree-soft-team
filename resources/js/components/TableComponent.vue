@@ -13,12 +13,14 @@
           {{ prop ? prop : 'No definido' }}
         </td>
         <td class="d-flex justify-content-center align-items-center gap-2">
-          <!-- <button class="btn btn-warning">Editar</button> -->
           <button @click="manejadorDeEdicion(row)" type="button" class="btn btn-warning" data-bs-toggle="modal"
             data-bs-target="#editar">
             Editar
           </button>
-          <button @click="manejadorDeEdicion(row)" class="btn btn-danger">Eliminar</button>
+          <button @click="manejadorDeEdicion(row)" type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#eliminar">
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>
