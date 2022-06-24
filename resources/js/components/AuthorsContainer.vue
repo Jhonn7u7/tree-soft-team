@@ -36,6 +36,17 @@ export default {
         console.log(error);
       }
     },
+     //fin de methods}
+   computed: {
+      formatDate() {
+        const intl = new Intl.DateTimeFormat("es", {
+          dateStyle: "medium"
+        });
+        return (time) => {
+          return intl.format(new Date(time));
+        };
+      }
+  },
   }
 }
 </script>
