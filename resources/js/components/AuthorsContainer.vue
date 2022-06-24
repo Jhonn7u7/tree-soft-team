@@ -21,6 +21,13 @@
         </form>
       </template>
     </modal-component>
+    <modal-component title="Eliminar autor" trigger="eliminar">
+      <template #body>
+        <p>¿Estas seguro que deseas eliminar el registro?</p>
+        <button class="btn btn-danger" @click="eliminarAutor">Eliminar</button>
+      </template>
+
+    </modal-component>
     <modal-component title="Editar autor" trigger="editar">
       <template #body>
         <form @submit.prevent="editarAutor">
@@ -108,9 +115,8 @@ export default {
         get: (searchParams, prop) => searchParams.get(prop),
       });
       return parametro[parametroABuscar]
-    }
-  },
-  async editarAutor() {
+    },
+    async editarAutor() {
       try {
         const id = this.obtenerParametrosDeUrl('id')
         const response = await fetch(`${hostname}/authors/${id}`, {
@@ -127,6 +133,7 @@ export default {
         console.log(error)
       }
     },
+  },
   //fin de methods}
   computed: {
     formatDate() {
