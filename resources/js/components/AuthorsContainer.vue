@@ -6,12 +6,12 @@
           <div class="mb-3">
             <label for="username" class="form-label">Nombre de autor</label>
             <input v-model="formulario.username" type="text" class="form-control" id="username">
-            <div id="username" class="form-text text-danger">El campo no puede estar vacio</div>
+            <div v-if="isEmpty(formulario.username)" id="username" class="form-text text-danger">El campo no puede estar vacio</div>
           </div>
           <div class="mb-3">
             <label for="lastname" class="form-label">Apellido de autor</label>
             <input v-model="formulario.lastname" type="text" class="form-control" id="lastname">
-            <div id="lastname" class="form-text text-danger">El campo no puede estar vacio</div>
+            <div v-if="isEmpty(formulario.lastname)" id="lastname" class="form-text text-danger">El campo no puede estar vacio</div>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Locación de autor</label>
@@ -34,12 +34,12 @@
           <div class="mb-3">
             <label for="username" class="form-label">Nombre de autor</label>
             <input v-model="formulario.username" type="text" class="form-control" id="username">
-            <div id="username" class="form-text text-danger">El campo no puede estar vacio</div>
+            <div v-if="isEmpty(formulario.username)" id="username" class="form-text text-danger">El campo no puede estar vacio</div>
           </div>
           <div class="mb-3">
             <label for="lastname" class="form-label">Apellido de autor</label>
             <input v-model="formulario.lastname" type="text" class="form-control" id="lastname">
-            <div id="lastname" class="form-text text-danger">El campo no puede estar vacio</div>
+            <div v-if="isEmpty(formulario.lastname)" id="lastname" class="form-text text-danger">El campo no puede estar vacio</div>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Locación de autor</label>
@@ -173,6 +173,11 @@ export default {
           autor.username.toLowerCase().trim().includes(aBuscar) ||
           autor.lastname.toLowerCase().trim().includes(aBuscar)
       )
+    },
+    isEmpty() {
+      return (elementoARevisar = "") => {
+        return elementoARevisar.length <= 0
+      }
     }
   },
 }
