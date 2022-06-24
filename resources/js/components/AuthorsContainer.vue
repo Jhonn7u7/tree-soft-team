@@ -110,6 +110,23 @@ export default {
       return parametro[parametroABuscar]
     }
   },
+  async editarAutor() {
+      try {
+        const id = this.obtenerParametrosDeUrl('id')
+        const response = await fetch(`${hostname}/authors/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.formulario)
+        })
+        alert('Autor editado')
+        await this.obtenerAutores()
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
+    },
   //fin de methods}
   computed: {
     formatDate() {
