@@ -11,7 +11,31 @@
 </template>
 
 <script>
+const hostname = "http://localhost:8000/api"
 export default {
-
+  data: () => ({
+    autores: []
+  }),
+  methods: {
+    async obtenerAutores() {
+      try {
+        const response = await fetch(`${hostname}/authors`, {
+          method: "GET"
+        });
+        const data = await response.json();
+        this.autores = data.map(autor => ({
+          id: autor.id,
+          username: autor.username,
+          lastname: autor.lastname,
+          location: autor.location,
+          createdAt: this.formatDate(autor.created_at),
+          updatedAt: this.formatDate(autor.updated_at),
+        }));
+      }
+      catch (error) {
+        console.log(error);
+      }
+    },
+  }
 }
 </script>
