@@ -8,7 +8,7 @@
 
 ### Requisitos
 - NodeJS LTS
-- PHP > 8
+- PHP > 7.4
 - MYSQL
 - Yarn: `npm install -g yarn`
 
