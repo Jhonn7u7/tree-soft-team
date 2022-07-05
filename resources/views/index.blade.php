@@ -41,7 +41,7 @@
     <authors-container v-slot="{ data }">
       <div class="row">
         <div class="col-12">
-          <table-component :headings="['Nombre', 'Apellido', 'Lugar', 'Creado', 'Actualizado']" :contents="data.autores" />
+          <table-component  :headings="['Nombre', 'Apellido', 'Lugar', 'Creado', 'Actualizado']" :contents="data.autores" />
         </div>
       </div>
     </authors-container>

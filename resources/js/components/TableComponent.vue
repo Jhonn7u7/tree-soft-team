@@ -14,8 +14,7 @@
         </td>
         <td class="d-flex justify-content-center align-items-center gap-2">
           <button @click="manejadorDeEdicion(row)" type="button" class="btn btn-warning" data-bs-toggle="modal"
-            data-bs-target="#editar">
-            Editar
+            data-bs-target="#editar"  >editar
           </button>
           <button @click="manejadorDeEdicion(row)" type="button" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#eliminar">
@@ -32,6 +31,7 @@ export default {
   props: ["headings", "contents"], // -> ['id', 'name']
   methods: {
     async manejadorDeEdicion({ id }) {
+      this.$emit('editar', id)
       if ('URLSearchParams' in window) {
         var searchParams = new URLSearchParams(window.location.search)
         searchParams.set("id", id);
@@ -39,6 +39,7 @@ export default {
         history.pushState(null, '', newRelativePathQuery);
       }
     }
-  }
+  },
+
 }
 </script>

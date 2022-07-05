@@ -17,8 +17,9 @@
 3. Modificar archivo .env.example a .env y configurar variables de entorno de la base de datos
 4. Ejecutar: `php artisan key:generate`
 5. Ejecutar: `yarn` para instalar todas las dependencias de node
-6. Ejecutar: `yarn dev` o `yarn watch` para cargar los componentes de vue.
-7. Ejecutar: `php artisan serve` para abrir un servidor local en http://localhost:8000
+6. Ejecutar:  `php artisan migrate --seed`
+7. Ejecutar: `yarn dev` o `yarn watch` para cargar los componentes de vue.
+8. Ejecutar: `php artisan serve` para abrir un servidor local en http://localhost:8000
 
 ## Integrantes
 

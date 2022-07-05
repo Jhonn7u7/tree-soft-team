@@ -28,12 +28,13 @@ class AuthorController extends Controller
     {
         $author = new Author([
             "username" => $request->username,
-            "lastname" => $request->lastname
+            "lastname" => $request->lastname,
+            "location" => $request->location
         ]);
 
         $author->save();
 
-        return response()->json($author, 201);
+        return response()->json($author, 200);
     }
 
     /**
